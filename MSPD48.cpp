@@ -9,7 +9,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <stdlib.h>
-//#include <stdio.h>ClimatManagerSettings
+//#include <stdio.h>
 #include <termios.h>
 #include <errno.h>
 #include <unistd.h>
@@ -36,7 +36,7 @@
 #include <ucontext.h>
 #include <uci.h>
 //#include <mysql.h>
-#include <execinfo.h>
+//#include <execinfo.h>
 //////////////////////////////////
 #include <Classes.h>
 #include <SocketPort.h>
@@ -3131,16 +3131,16 @@ void SetPidFile(string filename)
 //=======================================================
 static void signal_error(int sig, siginfo_t *si, void *ptr)
 {
-	void *ErrorAddr;
-	void *Trace[16];
-	int x;
-	int TraceSize;
-	char** Messages;
+	//void *ErrorAddr;
+	//void *Trace[16];
+	//int x;
+	//int TraceSize;
+	//char** Messages;
 	Log::INFO("[DAEMON] signal_error");
 	string signl = strsignal(sig);
 	string addr = toString(si->si_addr);
 	Log::ERROR("[DAEMON] Signal: " + signl + ", Addr: "+addr);
-
+/*
 	ErrorAddr = (void*)((ucontext_t*)ptr)->uc_mcontext.fault_address;
 	TraceSize = backtrace(Trace, 16);
 	Trace[1] = ErrorAddr;
@@ -3154,7 +3154,7 @@ static void signal_error(int sig, siginfo_t *si, void *ptr)
 		}
 		Log::ERROR("== End Backtrace ==");
 		free(Messages);
-	}
+	}*/
 	Log::INFO("DEMON Stopped!");
 	DestroyWorkThreads();
 	exit(CHILD_NEED_WORK);
